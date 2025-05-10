@@ -29,3 +29,76 @@ This project implements a **secure Web3 authentication system** using **MetaMask
 ---
 
 ## 📁 Project Structure
+
+src/
+├── controllers/ # Request handlers
+├── middlewares/ # Auth middleware
+├── repositories/ # DB access logic
+├── routes/ # Express route definitions
+├── models/ # Zod request validation
+├── services/ # Core business logic
+├── utils/ # Helper functions (e.g., nonce generation)
+└── index.ts # Entry point
+
+---
+
+### 🔐 Auth
+
+- `POST /api/auth/nonce`
+  - Body: `{ "walletAddress": "0x..." }`
+  - Returns a `nonce` string to be signed
+
+- `POST /api/auth/login`
+  - Body: `{ "walletAddress": "0x...", "signature": "0x..." }`
+  - Verifies signature and returns JWT token
+
+---
+
+### 👤 User
+
+- `GET /api/user/profile`
+  - Requires `Authorization: Bearer <token>`
+  - Returns user profile
+
+- `PUT /api/user/profile`
+  - Update user info (name, email, etc.)
+
+---
+
+## 🛡️ Security
+
+- Nonce-based authentication
+- Signature verification with `ethers.js`
+- JWT-based sessions
+- Input validation using Zod schemas
+- Role-based access (planned)
+
+---
+
+## 🧠 Potential Features
+
+- ENS (Ethereum Name Service) integration
+- Show user balance or NFTs
+- Role-based permissions (admin/user)
+- DAO & governance features
+- Token staking or DeFi integrations
+
+---
+
+## 📄 License
+
+MIT
+
+---
+
+## 🧪 How to Run
+
+```bash
+# Install dependencies
+npm install
+
+# Build project
+npm run build
+
+# Start development server
+npm run dev
