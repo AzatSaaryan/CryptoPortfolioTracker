@@ -42,11 +42,13 @@ class AuthService {
       if (!user) {
         throw new Error("User not found");
       }
+
       const isValidSignature = verifySignature(
         walletAddress,
         signature,
         user.nonce
       );
+
       if (!isValidSignature) {
         throw new Error("Invalid signature");
       }

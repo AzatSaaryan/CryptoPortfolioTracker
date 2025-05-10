@@ -3,16 +3,25 @@ import userService from "../services/userService.js";
 import { AuthenticatedRequest } from "../middlewares/authMiddleware.js";
 
 class UserController {
-  public updateUser: RequestHandler = async (req: Request, res: Response) => {
-    const { userId } = req.params;
+  public updateUser: RequestHandler = async (
+    req: AuthenticatedRequest,
+    res: Response
+  ) => {
     const updatedData = req.body;
+    if (!req.user) {
+      res.status(401).json({ message: "User not authenticated" });
+      return;
+    }
 
-    if (!userId || !updatedData) {
-      res.status(400).json({ messgae: "User ID and data are required" });
+    if (!updatedData) {
+      res.status(400).json({ messgae: "User data are required" });
       return;
     }
     try {
-      const updatedUser = await userService.updateUser(userId, updatedData);
+      const updatedUser = await userService.updateUser(
+        req.user.id,
+        updatedData
+      );
       if (!updatedUser) {
         res.status(404).json({ message: "User not found" });
         return;
@@ -66,10 +75,7 @@ class UserController {
         return;
       }
 
-      const user = {
-        _id: req.user._id,
-        walletAddress: req.user.walletAddress,
-      };
+      const user = await userService.findUserById(req.user.id);
 
       res.status(200).json({ message: "User retrieved successfully", user });
     } catch (error) {

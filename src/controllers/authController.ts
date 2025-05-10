@@ -1,9 +1,6 @@
 import { Request, RequestHandler, Response } from "express";
-import authService from "./../services/authService.js";
-import {
-  validateNonceRequest,
-  validateWalletAddressRequest,
-} from "../models/WalletModel.js";
+import authService from "../services/authService.js";
+import { validateWalletAddressRequest } from "../models/WalletModel.js";
 
 class AuthController {
   public generateNonce: RequestHandler = async (

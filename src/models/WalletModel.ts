@@ -7,11 +7,6 @@ export const PartialUserSchemaZod = UserSchemaZod.pick({
   nonce: true,
 });
 
-const NonceRequestSchema = z.object({
-  body: z.object({
-    nonce: z.string().min(1, "Nonce is required"),
-  }),
-});
 
 const WalletAddressRequestSchema = z.object({
   walletAddress: z
@@ -29,8 +24,4 @@ export function validateWalletAddressRequest(data: unknown) {
     }
     throw error;
   }
-}
-
-export function validateNonceRequest(data: unknown) {
-  return NonceRequestSchema.parse(data);
 }
