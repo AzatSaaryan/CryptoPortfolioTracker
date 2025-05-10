@@ -30,21 +30,24 @@ This project implements a **secure Web3 authentication system** using **MetaMask
 
 ## 📁 Project Structure
 
+```
 src/
-├── controllers/ # Request handlers
-├── middlewares/ # Auth middleware
-├── repositories/ # DB access logic
-├── routes/ # Express route definitions
-├── models/ # Zod request validation
-├── services/ # Core business logic
-├── utils/ # Helper functions (e.g., nonce generation)
-└── index.ts # Entry point
+├── controllers/       # Request handlers
+├── middlewares/       # Auth middleware
+├── repositories/      # DB access logic
+├── routes/            # Express route definitions
+├── models/            # Zod request validation
+├── services/          # Core business logic
+├── utils/             # Helper functions (e.g., nonce generation)
+└── index.ts           # Entry point
+```
 
 ---
 
 ### 🔐 Auth
 
 - `POST /api/auth/nonce`
+
   - Body: `{ "walletAddress": "0x..." }`
   - Returns a `nonce` string to be signed
 
@@ -57,6 +60,7 @@ src/
 ### 👤 User
 
 - `GET /api/user/profile`
+
   - Requires `Authorization: Bearer <token>`
   - Returns user profile
 
@@ -102,3 +106,4 @@ npm run build
 
 # Start development server
 npm run dev
+```
