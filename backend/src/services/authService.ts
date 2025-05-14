@@ -13,7 +13,7 @@ type LoginResponse = {
 };
 
 class AuthService {
-  async generateNonce(walletAddress: string): Promise<string | undefined> {
+  async generateNonce(walletAddress: string): Promise<string> {
     try {
       const nonce = createNonce();
 
