@@ -10,7 +10,10 @@ dotenv.config();
 
 const app: Express = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:5000',  // Разрешаем только фронт на этом домене
+  credentials: true,  // Разрешаем передачу cookies/креденциалов
+}));
 app.use(express.json());
 app.use(cookieParser());
 

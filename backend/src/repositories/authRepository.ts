@@ -17,14 +17,14 @@ class AuthRepository {
       throw new Error("User retrieval failed");
     }
   }
-
   async updateUserNonce(
     walletAddress: string,
     nonce: string
   ): Promise<IUser | null> {
     try {
       return await User.findOneAndUpdate(
-        { walletAddress, nonce },
+        { walletAddress },
+        { $set: { nonce } },
         { new: true }
       ).exec();
     } catch (error) {
