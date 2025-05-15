@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { BrowserProvider } from "ethers";
 import { getNonce, login } from "../services/auth";
 import axios from "../services/api";
+import metamaskLogo from "../UI/MetaMask-icon-fox.svg";
 
-export default function ConnectWallet() {
+export default function WalletConnect() {
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -66,21 +67,37 @@ export default function ConnectWallet() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <h1 className="text-xl font-bold">Wallet Connection</h1>
+    <div className="flex flex-col items-center justify-center gap-6 p-6 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-xl w-full max-w-md text-white">
+      <h1 className="text-2xl font-semibold tracking-wide">
+        🔐 Wallet Connection
+      </h1>
 
       <button
         onClick={walletAddress ? disconnectWallet : connectWallet}
-        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
         disabled={loading}
+        className={`relative w-full h-17 py-3 px-6 rounded-xl transition-all duration-300 text-lg font-medium
+    flex items-center justify-center
+        ${
+          loading
+            ? "bg-gray-500 cursor-not-allowed"
+            : walletAddress
+            ? "bg-red-600 hover:bg-red-700"
+            : "bg-green-600 hover:bg-green-700"
+        }`}
       >
+        <img
+          src={metamaskLogo}
+          alt="Metamask Logo"
+          className="absolute left-4 w-10 h-10"
+        />
         {loading
-          ? "Processing..."
+          ? "🔄 Processing..."
           : walletAddress
-          ? `Disconnect (${walletAddress.slice(0, 6)}...${walletAddress.slice(
-              -4
-            )})`
-          : "Connect Wallet"}
+          ? `🔌 Disconnect (${walletAddress.slice(
+              0,
+              6
+            )}...${walletAddress.slice(-4)})`
+          : " Connect Wallet"}
       </button>
     </div>
   );
