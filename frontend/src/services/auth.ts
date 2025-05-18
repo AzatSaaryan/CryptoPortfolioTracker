@@ -1,15 +1,13 @@
 import axios from "./api";
 
 interface LoginResponse {
-    message: string;
+  message: string;
   token: string;
   user: {
     id: string;
     walletAddress: string;
   };
 }
-
-
 
 export const getNonce = async (walletAddress: string): Promise<string> => {
   try {
@@ -27,7 +25,7 @@ export const getNonce = async (walletAddress: string): Promise<string> => {
 
 export const login = async (
   walletAddress: string,
-  signature: string
+  signature: string | Uint8Array<ArrayBufferLike>
 ): Promise<LoginResponse> => {
   try {
     const response = await axios.post("/auth/login", {

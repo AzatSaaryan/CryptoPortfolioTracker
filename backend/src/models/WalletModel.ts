@@ -7,12 +7,8 @@ export const PartialUserSchemaZod = UserSchemaZod.pick({
   nonce: true,
 });
 
-
 const WalletAddressRequestSchema = z.object({
-  walletAddress: z
-    .string()
-    .regex(/^0x[a-fA-F0-9]{40}$/, "Invalid Ethereum address")
-    .min(1, "Wallet address is required"),
+  walletAddress: z.string().min(1, "Wallet address is required"),
 });
 
 export function validateWalletAddressRequest(data: unknown) {

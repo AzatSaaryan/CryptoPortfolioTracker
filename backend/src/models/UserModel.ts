@@ -10,7 +10,7 @@ const userSchema = new Schema(
   {
     _id: { type: Types.ObjectId, default: () => new Types.ObjectId() },
     username: { type: String },
-    email: { type: String, sparse: true },
+    email: { type: String, unique: true, sparse: true },
     walletAddress: { type: String, unique: true, required: true },
     nonce: { type: String, required: true },
     role: {
