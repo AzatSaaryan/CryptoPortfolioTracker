@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import DisconnectWallet from "../components/DisconnectWallet"; // путь корректируй под себя
+import DisconnectWallet from "../components/DisconnectWallet";
+import GetCurrentUser from "../components/GetCurrentUser";
 import { BrowserProvider } from "ethers";
 import { PublicKey, Connection } from "@solana/web3.js";
 
@@ -21,7 +22,7 @@ export default function Dashboard() {
 
         const ethBalance = await provider.getBalance(addr);
         setBalance((Number(ethBalance) / 1e18).toFixed(4) + " ETH");
-      } else if (type === "phantom" && window.solana?.isPhantom) {
+      } else if (type === "phantom" && window.solana) {
         const pubkey = window.solana.publicKey;
         const addr = pubkey?.toBase58();
         setAddress(addr || null);
@@ -41,6 +42,7 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-gray-100 px-6 py-12">
       <DisconnectWallet />
+      <GetCurrentUser />
 
       <div className="max-w-xl mx-auto bg-white rounded-2xl shadow-lg p-6 space-y-4">
         <h1 className="text-2xl font-bold text-gray-800">Your Dashboard</h1>
