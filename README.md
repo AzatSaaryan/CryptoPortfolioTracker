@@ -1,4 +1,4 @@
-# 🔗 WalletGate — Secure Multi-Chain Web3 Authentication dApp
+# 🔗 ChainPass — Secure Multi-Chain Web3 Authentication dApp
 
 ---
 
