@@ -1,109 +1,76 @@
-# 🛡️ Web3 Authentication Backend
-
-## 🔍 Overview
-
-This project implements a **secure Web3 authentication system** using **MetaMask** and **Ethereum signatures**. It allows users to authenticate using their wallet address — no passwords required. The backend is built with **Node.js**, **Express**, and **TypeScript**.
-
----
-
-## 🚀 Features
-
-- 🔐 Web3 login via Ethereum wallet (e.g. MetaMask)
-- 🔁 Nonce-based signature verification
-- 📄 JWT-based session management
-- 🧪 Type-safe request validation with [Zod](https://zod.dev)
-- 🧑‍💼 Protected user profile routes
-- ✅ Clean modular architecture (routes, services, repositories)
-
----
-
-## 📦 Tech Stack
-
-- **Node.js + Express** — web framework
-- **TypeScript** — strict typing
-- **Zod** — runtime schema validation
-- **ethers.js** — cryptographic signature verification
-- **jsonwebtoken** — JWT-based authentication
-- **dotenv** — environment variable management
+# 🔗 WalletGate — Secure Multi-Chain Web3 Authentication dApp
 
 ---
 
 ## 📁 Project Structure
 
 ```
-src/
-├── controllers/       # Request handlers
-├── middlewares/       # Auth middleware
-├── repositories/      # DB access logic
-├── routes/            # Express route definitions
-├── models/            # Zod request validation
-├── services/          # Core business logic
-├── utils/             # Helper functions (e.g., nonce generation)
-└── index.ts           # Entry point
+/
+├── backend/ # Backend API (Node.js, Express, TypeScript)
+├── frontend/ # Frontend dApp (React, Redux, Web3 Integration)
+├── .gitignore
+├── README.md
 ```
 
 ---
 
-### 🔐 Auth
+## 🚀 Overview
 
-- `POST /api/auth/nonce`
+**WalletGate** is a modern Web3 decentralized application enabling secure authentication through Ethereum (MetaMask) and Solana (Phantom) wallets.
 
-  - Body: `{ "walletAddress": "0x..." }`
-  - Returns a `nonce` string to be signed
+No passwords needed — authentication relies on cryptographic signature verification and JWT sessions for seamless and secure access.
 
-- `POST /api/auth/login`
-  - Body: `{ "walletAddress": "0x...", "signature": "0x..." }`
-  - Verifies signature and returns JWT token
+The dApp includes:
 
----
+- Multi-chain wallet support (Ethereum + Solana)
+- Nonce-based message signing for proof of wallet ownership
+- Protected user dashboard & profile management
+- Wallet connect & disconnect UI with clear branding
+- Redux-powered reactive user state management
 
-### 👤 User
-
-- `GET /api/user/profile`
-
-  - Requires `Authorization: Bearer <token>`
-  - Returns user profile
-
-- `PUT /api/user/profile`
-  - Update user info (name, email, etc.)
+Future plans include ENS/SNS integration, NFT and balance display, role-based access control, DAO governance, and DeFi features.
 
 ---
 
-## 🛡️ Security
+## ⚙️ Getting Started
 
-- Nonce-based authentication
-- Signature verification with `ethers.js`
-- JWT-based sessions
-- Input validation using Zod schemas
-- Role-based access (planned)
-
----
-
-## 🧠 Potential Features
-
-- ENS (Ethereum Name Service) integration
-- Show user balance or NFTs
-- Role-based permissions (admin/user)
-- DAO & governance features
-- Token staking or DeFi integrations
-
----
-
-## 📄 License
-
-MIT
-
----
-
-## 🧪 How to Run
+### Backend Setup
 
 ```bash
-# Install dependencies
+cd backend
 npm install
-
-# Build project
-npm run build
-
-# Start development server
-npm run dev
 ```
+
+Create a .env file with necessary environment variables (JWT_SECRET, RPC URLs, etc.).
+
+Start the server: `bash npm run dev `
+The backend API will run on the configured port (e.g., http://localhost:4000).
+
+### Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm run start
+```
+
+The frontend dApp will be available at http://localhost:3000.
+
+---
+
+📦 Features
+🔐 Multi-Chain Wallet Authentication (MetaMask & Phantom)
+
+📝 Nonce Signing & Signature Verification
+
+🔑 JWT-Based Session Management
+
+🖥️ Protected Dashboard & Profile Pages
+
+🎨 Custom Wallet Connect/Disconnect UI
+
+⚡ Redux for Global User State
+
+---
+### 📜 License
+Distributed under the MIT License.
