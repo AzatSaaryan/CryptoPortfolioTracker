@@ -43,8 +43,8 @@ npm install
 
 Create a .env file with necessary environment variables (JWT_SECRET, RPC URLs, etc.).
 
-Start the server: `bash npm run dev `
-The backend API will run on the configured port (e.g., http://localhost:4000).
+Start the server: ``` npm run dev ```
+The backend API will run on the configured port (e.g., `http://localhost:4000`).
 
 ### Frontend Setup
 
@@ -54,11 +54,12 @@ npm install
 npm run start
 ```
 
-The frontend dApp will be available at http://localhost:3000.
+The frontend dApp will be available at `http://localhost:3000`.
 
 ---
 
-📦 Features
+### 📦 Features
+
 🔐 Multi-Chain Wallet Authentication (MetaMask & Phantom)
 
 📝 Nonce Signing & Signature Verification
@@ -72,5 +73,3 @@ The frontend dApp will be available at http://localhost:3000.
 ⚡ Redux for Global User State
 
 ---
-### 📜 License
-Distributed under the MIT License.
